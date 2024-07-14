@@ -8,12 +8,9 @@ public class Example1 {
         ArrayDeque<Integer> deque = new ArrayDeque<>();
 
         for(int i = 1; i < N + 1; i++) {
-            deque.add(i);
+            deque.addLast(i);
         }
 
-        // k개씩 pollFirst();
-        // LastPoll();
-        // 언제까지? => 요소가 하나 남을때까지
         while(deque.size() > 1) {
             for(int i = 0; i < K; i++) {
                 deque.addLast(deque.pollFirst());
@@ -22,7 +19,7 @@ public class Example1 {
             deque.pollLast();
         }
 
-        return deque.poll();
+        return deque.pollFirst();
     }
 
     public static void main(String[] args) {
