@@ -1,6 +1,7 @@
 package com.study.book.queue;
 
 import java.util.ArrayDeque;
+import java.util.Arrays;
 import java.util.Queue;
 
 public class Programmers159994 {
@@ -41,24 +42,14 @@ public class Programmers159994 {
     private static String solution2(String[] cards1, String[] cards2, String[] goal) {
 
         String answer = "Yes";
-        Queue<String> cards1Queue = new ArrayDeque<>();
-        Queue<String> cards2Queue = new ArrayDeque<>();
-
-        for (String card : cards1) {
-            cards1Queue.add(card);
-        }
-
-        for (String card : cards2) {
-            cards2Queue.add(card);
-        }
+        Queue<String> cards1Queue = new ArrayDeque<>(Arrays.asList(cards1));
+        Queue<String> cards2Queue = new ArrayDeque<>(Arrays.asList(cards2));
 
         for (String word : goal) {
             if (word.equals(cards1Queue.peek())) {
                 cards1Queue.poll();
-                continue;
             } else if (word.equals(cards2Queue.peek())) {
                 cards2Queue.poll();
-                continue;
             } else {
                 return "No";
             }
