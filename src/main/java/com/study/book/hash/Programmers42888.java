@@ -1,9 +1,9 @@
 package com.study.book.hash;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 
 public class Programmers42888 {
 
@@ -44,10 +44,37 @@ public class Programmers42888 {
         return result.stream().toArray(String[]::new);
     }
 
+    private static String[] solution2(String[] record) {
+        // Enter, Leave 메시지 저장 Map
+        Map<String, String> msg  = new HashMap<>();
+        msg.put("Enter", "님이 들어왔습니다.");
+        msg.put("Leave", "님이 나갔습니다.");
+
+        Map<String, String> idMap = new HashMap<>();
+        for(String chat: record) {
+            String[] cmd = chat.split(" ");
+            if(cmd.length == 3) {
+                idMap.put(cmd[1], cmd[2]);
+            }
+        }
+
+        ArrayList<String> answer = new ArrayList<>();
+        for(String chat: record) {
+            String[] cmd = chat.split(" ");
+
+            if(msg.containsKey(cmd[0])) {
+                answer.add(idMap.get(cmd[1]) + msg.get(cmd[0]));
+            }
+        }
+
+        return answer.stream().toArray(String[]::new);
+    }
+
     public static void main(String[] args) {
         String[] record = new String[] {"Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"};
         String[] result = new String[]{"Prodo님이 들어왔습니다.", "Ryan님이 들어왔습니다.", "Prodo님이 나갔습니다.", "Prodo님이 들어왔습니다."};
 
         System.out.println(Arrays.equals(Programmers42888.solution(record), result));
+        System.out.println(Arrays.equals(Programmers42888.solution2(record), result));
     }
 }
