@@ -28,7 +28,7 @@ public class Programmers131127 {
                 answer++;
             }
         }
-        
+
         return answer;
     }
 
