@@ -45,8 +45,6 @@ public class Example1 {
         int[] nodes = new int[]{1, 2, 3, 4, 5, 6, 7};
         String[] result1 = new String[]{"1 2 4 5 3 6 7", "4 2 5 1 6 3 7", "4 5 2 6 7 3 1"};
 
-        System.out.println(Arrays.toString(Example1.solution(nodes)));
-
         System.out.println(Arrays.equals(result1, Example1.solution(nodes)));
     }
 }
