@@ -15,7 +15,7 @@ public class Programmers1845 {
     }
 
     private static int solution2(int[] nums) {
-        HashSet<Integer> set = Arrays.stream(nums).boxed().collect(Collectors.toCollection(HashSet::new));
+        HashSet<Integer> set  = Arrays.stream(nums).boxed().collect(Collectors.toCollection(HashSet::new));
 
         return Math.min(nums.length / 2, set.size());
     }
