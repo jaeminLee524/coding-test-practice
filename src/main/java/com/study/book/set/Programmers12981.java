@@ -35,12 +35,32 @@ public class Programmers12981 {
             if(set.contains(word)) {
                 return answer;
             }
+
+            set.add(word);
         }
 
         answer[0] = 0;
         answer[1] = 0;
 
         return answer;
+    }
+
+    private static int[] solution2(int n, String[] words) {
+        HashSet<String> useWords = new HashSet<>();
+
+        char prevWord = words[0].charAt(0);
+
+        for (int i = 0; i < words.length; i++) {
+            if (useWords.contains(words[i]) || words[i].charAt(0) != prevWord) {
+                return new int[]{(i % n) + 1, (i / n) + 1};
+            }
+
+            useWords.add(words[i]);
+
+            prevWord = words[i].charAt(words[i].length() - 1);
+        }
+
+        return new int[]{0, 0};
     }
 
     public static void main(String[] args) {
@@ -60,5 +80,9 @@ public class Programmers12981 {
         System.out.println(Arrays.equals(Programmers12981.solution(n1, words1), result1));
         System.out.println(Arrays.equals(Programmers12981.solution(n2, words2), result2));
         System.out.println(Arrays.equals(Programmers12981.solution(n3, words3), result3));
+
+        System.out.println(Arrays.equals(Programmers12981.solution2(n1, words1), result1));
+        System.out.println(Arrays.equals(Programmers12981.solution2(n2, words2), result2));
+        System.out.println(Arrays.equals(Programmers12981.solution2(n3, words3), result3));
     }
 }
