@@ -1,6 +1,7 @@
 package com.study.book.set;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class Programmers42861 {
 
@@ -11,7 +12,8 @@ public class Programmers42861 {
         int edges = 0;
 
         // 비용을 오름차순으로 정렬
-        Arrays.sort(costs, (o1, o2) -> Integer.compare(o1[2], o2[2]));
+//        Arrays.sort(costs, (o1, o2) -> Integer.compare(o1[2], o2[2]));
+        Arrays.sort(costs, Comparator.comparingInt(o -> o[2]));
 
         // parent 초기화
         parent = new int[n];
