@@ -1,6 +1,5 @@
 package com.study.book.graph;
 
-import com.sun.source.tree.IfTree;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -58,6 +57,42 @@ public class DikstraExample {
         return dist;
     }
 
+    public static int[] solution2(int[][] graph, int start, int n) {
+        ArrayList<Node>[] adjList = new ArrayList[n];
+        for(int i = 0; i< adjList.length; i++) {
+            adjList[i] = new ArrayList<>();
+        }
+
+        for(int[] edge : graph) {
+            adjList[edge[0]].add(new Node(edge[1], edge[2]));
+        }
+
+        int[] dist = new int[n];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        boolean[] visited = new boolean[n];
+
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparing(o -> o.cost));
+        dist[start] = 0;
+        pq.add(new Node(start, 0));
+
+        while(!pq.isEmpty()) {
+            Node now = pq.poll();
+
+            if(visited[now.dest]) {
+                continue;
+            }
+
+            for(Node next : adjList[now.dest]) {
+                if (now.cost + next.cost < dist[next.dest]) {
+                    dist[next.dest] = now.cost + next.cost;
+                    pq.add(new Node(next.dest, dist[next.dest]));
+                }
+            }
+        }
+
+        return dist;
+    }
+
     public static void main(String[] args) {
         int[][] graph = new int[][]{
             {0, 1, 9}, {0, 2, 3}, {1, 0, 5}, {2, 1, 1}
@@ -68,5 +103,6 @@ public class DikstraExample {
 
 
         System.out.println(Arrays.equals(DikstraExample.solution(graph, start, n), result));
+        System.out.println(Arrays.equals(DikstraExample.solution2(graph, start, n), result));
     }
 }
