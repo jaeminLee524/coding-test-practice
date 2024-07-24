@@ -3,7 +3,7 @@ package com.study.book.graph;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Example {
+public class DepthFirstExample {
 
     // 인접리스트
     private static ArrayList<Integer>[] adjList;
@@ -59,6 +59,6 @@ public class Example {
 
         int[] result1 = new int[]{1, 2, 3, 4, 5};
 
-        System.out.println(Arrays.equals(Example.solution(graph1, start1, n), result1));
+        System.out.println(Arrays.equals(DepthFirstExample.solution(graph1, start1, n), result1));
     }
 }
