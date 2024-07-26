@@ -23,37 +23,34 @@ public class Programmers1844 {
         int M = maps[0].length;
 
         int[][] dist = new int[N][M];
+        dist[0][0] = 1;
 
         ArrayDeque<Node> queue = new ArrayDeque<>();
-        queue.add(new Node(0, 0));
-        dist[0][0] = 1;
+        queue.addLast(new Node(0, 0));
 
         while(!queue.isEmpty()) {
             Node now = queue.pollFirst();
 
-            for( int i = 0; i < 4; i++) {
+            for(int i = 0; i < 4; i++) {
                 int newRow = now.row + nx[i];
                 int newColumn = now.column + ny[i];
 
-                // 이탈
-                if (newRow < 0 || newColumn < 0 || newRow >= N || newColumn >= M) {
+                if(newRow < 0 || newColumn < 0 || newRow >= N || newColumn >= M) {
                     continue;
                 }
 
-                // 벽
                 if(maps[newRow][newColumn] == 0) {
                     continue;
                 }
 
-                // 처음 방문한 길의 경우
                 if(dist[newRow][newColumn] == 0) {
+                    dist[newRow][newColumn] = dist[now.row][now.column] + 1;
                     queue.addLast(new Node(newRow, newColumn));
-                    dist[newRow][newRow] = dist[now.row][now.column] + 1;
                 }
             }
         }
 
-        return dist[N -1][M -1] == 0 ? -1 : dist[N -1][M -1];
+        return dist[N - 1][M - 1] == 0 ? -1 : dist[N - 1][M - 1];
     }
 
     public static void main(String[] args) {
