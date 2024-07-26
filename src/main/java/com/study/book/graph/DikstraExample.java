@@ -16,7 +16,7 @@ public class DikstraExample {
         }
     }
 
-    public static int[] solution(int[][] graph, int start, int n) {
+    private static int[] solution(int[][] graph, int start, int n) {
         ArrayList<Node>[] adjList = new ArrayList[n];
         for(int i = 0; i < n; i++) {
             adjList[i] = new ArrayList<>();
@@ -57,7 +57,7 @@ public class DikstraExample {
         return dist;
     }
 
-    public static int[] solution2(int[][] graph, int start, int n) {
+    private static int[] solution2(int[][] graph, int start, int n) {
         ArrayList<Node>[] adjList = new ArrayList[n];
         for(int i = 0; i< adjList.length; i++) {
             adjList[i] = new ArrayList<>();
@@ -81,6 +81,8 @@ public class DikstraExample {
             if(visited[now.dest]) {
                 continue;
             }
+
+            visited[now.dest] = true;
 
             for(Node next : adjList[now.dest]) {
                 if (now.cost + next.cost < dist[next.dest]) {
