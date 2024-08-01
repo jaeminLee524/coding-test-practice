@@ -30,6 +30,7 @@ public class Programmers86971 {
         return answer;
     }
 
+    // 자식 노드를 탐색할때마다 최소 송전 탑 개수를 구하는 방식
     private static int dfs(int now) {
         visited[now] = true;
 
@@ -42,7 +43,26 @@ public class Programmers86971 {
             }
         }
 
+        int returnValue = sum + 1;
+        System.out.println("now = " + now + " nodeCnt = " + returnValue);
+
         return sum + 1;
+    }
+
+    // 자식 노드를 모두 구한 후 최소 값을 구하는 방식
+    private static int dfs2(int now) {
+        visited[now] = true;
+
+        int child = 1;
+        for(int next : adjList[now]) {
+            if (!visited[next]) {
+                child += dfs(next);
+            }
+        }
+
+        answer = Math.min(answer, Math.abs(N - 2 * child));
+
+        return child;
     }
 
     public static void main(String[] args) {
