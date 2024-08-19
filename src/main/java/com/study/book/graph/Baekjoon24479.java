@@ -25,9 +25,8 @@ public class Baekjoon24479 {
             adjList[i] = new ArrayList<>();
         }
 
-        for (int i = 1; i < N + 1; i++) {
+        for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
-
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
 
@@ -41,7 +40,7 @@ public class Baekjoon24479 {
 
         visited = new boolean[N + 1];
         answer = new int[N + 1];
-        visitOrder = R;
+        visitOrder = 1;
 
         dfs(R);
 
