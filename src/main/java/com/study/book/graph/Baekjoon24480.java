@@ -37,7 +37,8 @@ public class Baekjoon24480 {
 
         // 인접 리스트 값 역순으로 정렬
         for(ArrayList<Integer> list : adjList) {
-            Collections.sort(list, (o1, o2) -> o2.compareTo(o1));
+//            Collections.sort(list, (o1, o2) -> o2.compareTo(o1));
+            Collections.sort(list, Collections.reverseOrder());
         }
 
         // 방문 기록 배열 초기화
