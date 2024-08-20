@@ -91,8 +91,8 @@ public class Baekjoon1260 {
 
             for(int next : adjList[now]) {
                 if(!visited[next]) {
-                    visited[next] = true;
                     queue.add(next);
+                    visited[next] = true;
                 }
             }
         }
